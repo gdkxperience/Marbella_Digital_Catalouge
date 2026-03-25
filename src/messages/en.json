@@ -164,6 +164,15 @@
     "rights": "All rights reserved.",
     "disclaimer": "The textures and colors of products in this catalogue are indicative. Each block and batch of natural stone has its own unique markings and veining, guaranteeing that every piece is unrepeatable and one of a kind."
   },
+  "popup": {
+    "title": "EXCLUSIVE OFFER",
+    "description": "Subscribe to our newsletter and receive 10% off your first order. Be the first to discover new models and exclusive offers.",
+    "placeholder": "Your email address",
+    "submit": "GET 10% OFF",
+    "privacy": "We respect your privacy. No spam.",
+    "thankYou": "THANK YOU!",
+    "successMessage": "Your 10% discount code will be sent to your email."
+  },
   "common": {
     "learnMore": "Learn more",
     "viewAll": "View all",

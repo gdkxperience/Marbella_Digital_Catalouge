@@ -41,7 +41,7 @@ export default function AboutSection() {
         </div>
 
         {/* Right — text column */}
-        <div className="bg-white flex flex-col justify-center px-6 py-12 md:px-10 lg:px-14 xl:px-20">
+        <div className="bg-white flex flex-col justify-center px-8 py-12 md:px-14 lg:px-20 xl:px-28">
           {/* Section title — right-aligned */}
           <div className="flex justify-end mb-8">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
@@ -51,7 +51,7 @@ export default function AboutSection() {
 
           <div className="w-12 h-px bg-foreground/20 mb-8" />
 
-          <div className="space-y-4 text-xs text-foreground/90 leading-[2]">
+          <div className="space-y-3 text-xs text-foreground leading-[1.9]">
             {aboutText.map((p, i) => (
               <p key={i}>
                 {i === 0 ? (
@@ -75,7 +75,7 @@ export default function AboutSection() {
               {whyReasons.map((reason, i) => (
                 <div key={i} className="flex items-start gap-2.5">
                   <span className="text-[8px] text-foreground/70 mt-[5px] flex-shrink-0">◆</span>
-                  <p className="text-xs text-foreground/85 leading-[1.8] tracking-wide">
+                  <p className="text-xs text-foreground leading-[1.8] tracking-wide">
                     {reason}
                   </p>
                 </div>

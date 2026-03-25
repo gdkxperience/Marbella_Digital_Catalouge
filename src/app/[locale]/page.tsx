@@ -4,6 +4,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ProductsSection from "@/components/sections/ProductsSection";
 import StonesSection from "@/components/sections/StonesSection";
 import InspirationSection from "@/components/sections/InspirationSection";
+import DiscountPopup from "@/components/ui/DiscountPopup";
 
 export default async function HomePage({
   params,
@@ -21,6 +22,7 @@ export default async function HomePage({
       <ProductsSection />
       <StonesSection />
       <InspirationSection />
+      <DiscountPopup />
     </>
   );
 }

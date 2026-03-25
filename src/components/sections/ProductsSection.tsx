@@ -264,11 +264,27 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
 
               {/* Description */}
               {fullDescription && (
-                <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide mb-8">
+                <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide mb-4">
                   {fullDescription.length > 350
                     ? fullDescription.substring(0, 350) + "…"
                     : fullDescription}
                 </p>
+              )}
+
+              {/* View in store link */}
+              {product.storeUrl && (
+                <div className="mb-6">
+                  <a
+                    href={product.storeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline text-[10px] tracking-[0.2em] uppercase text-foreground/80 hover:text-foreground transition-all duration-300"
+                  >
+                    <span className="border-b border-foreground/50 hover:border-foreground pb-0.5">
+                      {t("viewInStore")} →
+                    </span>
+                  </a>
+                </div>
               )}
 
               {/* 4th variation — under description */}
@@ -289,27 +305,6 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
                 </div>
               )}
 
-              {/* Store link */}
-              {product.storeUrl && (
-                <div className="mt-6">
-                  <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-muted group-hover:text-foreground transition-colors">
-                    {t("viewInStore")}
-                    <svg
-                      className="w-3.5 h-3.5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              )}
             </div>
             </div>
           </div>
@@ -322,6 +317,7 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
 /* ── Accessories spread — single section, cover left, all items as variants right ── */
 function AccessoriesSpread() {
   const tc = useTranslations("categories");
+  const t = useTranslations("products");
 
   return (
     <div className="block">
@@ -371,6 +367,20 @@ function AccessoriesSpread() {
                   </div>
                 </div>
               ))}
+
+              {/* View accessories in store */}
+              <div className="mt-4">
+                <a
+                  href="https://marbelladd.com/collections/accessories"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline text-[10px] tracking-[0.2em] uppercase text-foreground/80 hover:text-foreground transition-all duration-300"
+                >
+                  <span className="border-b border-foreground/50 hover:border-foreground pb-0.5">
+                    {t("viewInStore")} →
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

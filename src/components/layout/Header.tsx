@@ -13,20 +13,13 @@ export default function Header() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [lastScroll, setLastScroll] = useState(0);
-
-  // Show/hide on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 80);
-      setHidden(y > lastScroll && y > 400);
-      setLastScroll(y);
+      setScrolled(window.scrollY > 80);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScroll]);
+  }, []);
 
   const switchLocale = (newLocale: string) => {
     router.replace(pathname, { locale: newLocale as "bg" | "en" });
@@ -56,8 +49,6 @@ export default function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          hidden ? "-translate-y-full" : "translate-y-0"
-        } ${
           scrolled
             ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.04)]"
             : "bg-transparent"

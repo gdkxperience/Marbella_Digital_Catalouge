@@ -28,11 +28,11 @@ export default function HeroSection() {
       </div>
 
       {/* Thin decorative lines */}
-      <div className="absolute top-12 left-12 right-12 bottom-12 pointer-events-none hidden md:block">
-        <div className="absolute top-0 left-0 right-0 h-px bg-white/[0.06]" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.06]" />
-        <div className="absolute top-0 bottom-0 left-0 w-px bg-white/[0.06]" />
-        <div className="absolute top-0 bottom-0 right-0 w-px bg-white/[0.06]" />
+      <div className="absolute top-20 left-12 right-12 bottom-12 pointer-events-none hidden md:block">
+        <div className="absolute top-0 left-0 right-0 h-px bg-white/[0.08]" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.08]" />
+        <div className="absolute top-0 bottom-0 left-0 w-px bg-white/[0.08]" />
+        <div className="absolute top-0 bottom-0 right-0 w-px bg-white/[0.08]" />
       </div>
 
       {/* Content */}
