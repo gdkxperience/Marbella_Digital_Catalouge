@@ -14,7 +14,8 @@
       "Bash(/usr/bin/curl -s -o /dev/null -w \"%{http_code}\" \"https://nxxazqxrtpnvpkbjzrvd.supabase.co/storage/v1/object/public/images/zazu.jpg\")",
       "Bash(/usr/bin/curl -s \"https://nxxazqxrtpnvpkbjzrvd.supabase.co/storage/v1/object/public/images/zazu.jpg\")",
       "Bash(/usr/bin/curl -s -o /dev/null -w \"%{http_code}\" \"https://nxxazqxrtpnvpkbjzrvd.supabase.co/storage/v1/object/public/images/zazu_cover_calacatta_viola.jpeg\")",
-      "Bash(/usr/bin/curl -s -H \"apikey: sb_publishable_uYDrA8lwLDhOL-XGbFh3WQ_-slOBkNN\" -H \"Authorization: Bearer sb_publishable_uYDrA8lwLDhOL-XGbFh3WQ_-slOBkNN\" -H \"Content-Type: application/json\" \"https://nxxazqxrtpnvpkbjzrvd.supabase.co/storage/v1/object/list/images\" -X POST -d '{\"\"prefix\"\":\"\"\"\",\"\"limit\"\":200,\"\"sortBy\"\":{\"\"column\"\":\"\"name\"\",\"\"order\"\":\"\"asc\"\"}}')"
+      "Bash(/usr/bin/curl -s -H \"apikey: sb_publishable_uYDrA8lwLDhOL-XGbFh3WQ_-slOBkNN\" -H \"Authorization: Bearer sb_publishable_uYDrA8lwLDhOL-XGbFh3WQ_-slOBkNN\" -H \"Content-Type: application/json\" \"https://nxxazqxrtpnvpkbjzrvd.supabase.co/storage/v1/object/list/images\" -X POST -d '{\"\"prefix\"\":\"\"\"\",\"\"limit\"\":200,\"\"sortBy\"\":{\"\"column\"\":\"\"name\"\",\"\"order\"\":\"\"asc\"\"}}')",
+      "Bash(npm run:*)"
     ]
   }
 }

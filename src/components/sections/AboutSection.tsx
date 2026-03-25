@@ -27,9 +27,9 @@ export default function AboutSection() {
   return (
     <section id="about" className="overflow-hidden">
       {/* Full-bleed editorial spread */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[60vh] md:min-h-[80vh]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[50vh] md:min-h-[70vh]">
         {/* Left — full bleed image */}
-        <div className="relative min-h-[50vh] lg:min-h-screen img-zoom">
+        <div className="relative min-h-[40vh] lg:min-h-full img-zoom">
           <SupabaseImage
             src={getImageUrl("about_us_cover.jpg")}
             alt="Marbella workshop"
@@ -41,18 +41,17 @@ export default function AboutSection() {
         </div>
 
         {/* Right — text column */}
-        <div className="bg-white flex flex-col justify-center px-6 py-16 md:px-10 lg:px-14 xl:px-20">
-          <p className="text-[10px] tracking-[0.5em] uppercase text-foreground/50 mb-6">
-            За нас
-          </p>
+        <div className="bg-white flex flex-col justify-center px-6 py-12 md:px-10 lg:px-14 xl:px-20">
+          {/* Section title — right-aligned */}
+          <div className="flex justify-end mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
+              ЗА НАС
+            </h2>
+          </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extralight tracking-[0.15em] mb-4">
-            ЗА НАС
-          </h2>
+          <div className="w-12 h-px bg-foreground/20 mb-8" />
 
-          <div className="w-12 h-px bg-foreground/20 mb-10" />
-
-          <div className="space-y-4 text-xs text-foreground/70 leading-[2] max-w-lg">
+          <div className="space-y-4 text-xs text-foreground/90 leading-[2]">
             {aboutText.map((p, i) => (
               <p key={i}>
                 {i === 0 ? (
@@ -68,15 +67,15 @@ export default function AboutSection() {
           </div>
 
           {/* Why Choose Marbella */}
-          <div className="mt-12">
-            <h3 className="text-xs md:text-sm tracking-[0.25em] uppercase font-normal text-foreground mb-8 text-center">
+          <div className="mt-10">
+            <h3 className="text-xs md:text-sm tracking-[0.25em] uppercase font-normal text-foreground mb-6 text-center">
               ЗАЩО ДА ИЗБЕРЕТЕ <span className="font-bold">MARBELLA</span>
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2.5">
               {whyReasons.map((reason, i) => (
                 <div key={i} className="flex items-start gap-2.5">
-                  <span className="text-[8px] text-foreground/60 mt-[5px] flex-shrink-0">◆</span>
-                  <p className="text-xs text-foreground/70 leading-[1.8] tracking-wide">
+                  <span className="text-[8px] text-foreground/70 mt-[5px] flex-shrink-0">◆</span>
+                  <p className="text-xs text-foreground/85 leading-[1.8] tracking-wide">
                     {reason}
                   </p>
                 </div>

@@ -17,7 +17,7 @@ function StoneCard({ stone, t }: { stone: Stone; t: ReturnType<typeof useTransla
           src={getImageUrl(stone.image)}
           alt={stone.name}
           fill
-          className="object-cover object-center"
+          className="object-cover object-center scale-[2]"
           sizes="160px"
         />
       </div>
@@ -31,7 +31,7 @@ function StoneCard({ stone, t }: { stone: Stone; t: ReturnType<typeof useTransla
           {stone.origin}
         </p>
         {description && (
-          <p className="text-[11px] text-muted leading-[1.8] tracking-wide mt-2 line-clamp-5">
+          <p className="text-[11px] text-foreground/75 leading-[1.8] tracking-wide mt-2 line-clamp-5">
             {description}
           </p>
         )}
@@ -55,9 +55,9 @@ export default function StonesSection() {
   return (
     <section id="stones" className="bg-white overflow-hidden">
       {/* ── Section 1: Cover left + title & 3 stones right ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh] md:min-h-[80vh]">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[50vh] md:min-h-[70vh]">
         {/* Cover image */}
-        <div className="relative min-h-[50vh] md:min-h-full overflow-hidden bg-white">
+        <div className="relative min-h-[40vh] md:min-h-full overflow-hidden bg-white">
           <SupabaseImage
             src={getImageUrl("stone_types_cover.PNG")}
             alt="Natural Stone"
@@ -72,7 +72,7 @@ export default function StonesSection() {
           <div className="w-full">
             {/* Section title — right-aligned, slightly smaller */}
             <div className="flex justify-end mb-10">
-              <h2 className="text-3xl md:text-5xl lg:text-[5rem] font-extralight tracking-[0.2em] uppercase text-foreground leading-none select-none">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
                 {t("title")}
               </h2>
             </div>

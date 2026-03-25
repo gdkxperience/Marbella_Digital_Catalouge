@@ -17,6 +17,7 @@ export default async function HomePage({
     <>
       <HeroSection />
       <AboutSection />
+      <div className="h-16 md:h-24" />
       <ProductsSection />
       <StonesSection />
       <InspirationSection />

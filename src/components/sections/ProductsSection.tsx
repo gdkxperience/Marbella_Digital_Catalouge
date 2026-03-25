@@ -150,9 +150,9 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
 
   return (
     <div className="block group">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh] md:min-h-[80vh]">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[50vh] md:min-h-[70vh]">
         {/* ── LEFT HALF: Cover image — full bleed ── */}
-        <div className="relative min-h-[50vh] md:min-h-full overflow-hidden bg-white">
+        <div className="relative min-h-[40vh] md:min-h-full overflow-hidden bg-white">
           <SupabaseImage
             src={getImageUrl(product.image)}
             alt={product.name}
@@ -168,7 +168,7 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
             {/* Section title — only on first product */}
             {showSectionTitle && (
               <div className="flex justify-end mb-10">
-                <h2 className="text-4xl md:text-6xl lg:text-[7rem] font-extralight tracking-[0.2em] uppercase text-foreground leading-none select-none">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
                   {t("title")}
                 </h2>
               </div>
@@ -197,7 +197,7 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
                         sizes="(max-width: 768px) 50vw, 25vw"
                       />
                     </div>
-                    <p className="text-[10px] tracking-[0.08em] text-foreground/60 mt-1.5">
+                    <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
                       {v.label}
                     </p>
                   </div>
@@ -213,7 +213,7 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
                       sizes="25vw"
                     />
                   </div>
-                  <p className="text-[10px] tracking-[0.08em] text-foreground/60 mt-1.5">
+                  <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
                     {product.name}
                   </p>
                 </div>
@@ -264,7 +264,7 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
 
               {/* Description */}
               {fullDescription && (
-                <p className="text-xs text-muted leading-[1.9] tracking-wide mb-8">
+                <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide mb-8">
                   {fullDescription.length > 350
                     ? fullDescription.substring(0, 350) + "…"
                     : fullDescription}
@@ -283,7 +283,7 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
                       sizes="25vw"
                     />
                   </div>
-                  <p className="text-[10px] tracking-[0.08em] text-foreground/60 mt-1.5">
+                  <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
                     {fourthVariation.label}
                   </p>
                 </div>
@@ -325,9 +325,9 @@ function AccessoriesSpread() {
 
   return (
     <div className="block">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh] md:min-h-[80vh]">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[50vh] md:min-h-[70vh]">
         {/* ── LEFT HALF: Cover image — full bleed ── */}
-        <div className="relative min-h-[50vh] md:min-h-full overflow-hidden bg-white">
+        <div className="relative min-h-[40vh] md:min-h-full overflow-hidden bg-white">
           <SupabaseImage
             src={getImageUrl("accessories_cover_podnos_oval.webp")}
             alt="Marbella Accessories"
@@ -352,7 +352,7 @@ function AccessoriesSpread() {
             <div className="flex flex-col gap-8">
               {accessories.map((item) => (
                 <div key={item.name} className="flex gap-4">
-                  <div className="relative w-28 h-28 md:w-36 md:h-36 flex-shrink-0 overflow-hidden bg-white">
+                  <div className="relative w-36 h-36 md:w-44 md:h-44 flex-shrink-0 overflow-hidden bg-white">
                     <SupabaseImage
                       src={getImageUrl(item.image)}
                       alt={item.name}
@@ -365,7 +365,7 @@ function AccessoriesSpread() {
                     <h4 className="text-xs tracking-[0.08em] font-semibold mb-2">
                       {item.name}
                     </h4>
-                    <p className="text-xs text-muted leading-[1.9] tracking-wide">
+                    <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide">
                       {item.description}
                     </p>
                   </div>

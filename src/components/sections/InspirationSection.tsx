@@ -23,7 +23,7 @@ export default function InspirationSection() {
         <p className="text-[10px] tracking-[0.5em] uppercase text-muted-light mb-6">
           Lookbook
         </p>
-        <h2 className="text-4xl md:text-6xl lg:text-[7rem] font-extralight tracking-[0.2em]">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight tracking-[0.15em] text-right">
           {t("title")}
         </h2>
         <div className="w-20 h-px bg-foreground/15 mx-auto mt-8" />

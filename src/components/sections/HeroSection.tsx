@@ -75,16 +75,6 @@ export default function HeroSection() {
           {t("subtitle")}
         </motion.p>
 
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.6 }}
-          className="text-[11px] sm:text-xs tracking-[0.15em] text-white/25 mt-10 md:mt-16 max-w-md mx-auto leading-relaxed"
-        >
-          {t("tagline")}
-        </motion.p>
-
         {/* Scroll CTA */}
         <motion.div
           initial={{ opacity: 0 }}
