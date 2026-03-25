@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "title": "Marbella Design & Decor | Catalogue 2026",
+    "description": "Bulgarian boutique brand for luxury marble and granite tables"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "stones": "Stone",
+    "inspiration": "Inspiration",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "MARBELLA",
+    "subtitle": "Design & Decor",
+    "tagline": "Bulgarian craftsmanship. Natural stone. Timeless design.",
+    "cta": "Browse the catalogue"
+  },
+  "about": {
+    "title": "ABOUT US",
+    "p1": "Marbella is a Bulgarian boutique brand for luxury marble and granite tables, founded by a designer with a deep and longstanding connection to natural stone. The brand was born in the family workshop, where the craft has been passed down through generations. From the initial concept and design, through technical drawings to the final production — every piece is created in our own workshop.",
+    "p2": "Marbella specializes in fully custom-made natural stone tables — from sculptural dining models to refined coffee tables, console tables and other pieces designed to complement designer interiors. We work with carefully selected marbles and granites from various countries, combined with precision craftsmanship.",
+    "p3": "We believe that just as no two stones are alike in nature, no two projects are the same. The natural pattern, structure and character of each slab guarantee that every table is a unique accent in any space. Our designer approach, personal communication, flexibility in dimensions and production timelines allow us to work effectively with interior designers and architects.",
+    "whyTitle": "WHY CHOOSE MARBELLA",
+    "why1": "Designed by a designer for designers",
+    "why2": "Manufactured in our own family workshop",
+    "why3": "Production lead time: 15–20 working days",
+    "why4": "Stone samples available on request",
+    "why5": "Personal attention to every order",
+    "why6": "Flexibility in dimensions and details",
+    "why7": "Direct communication with the manufacturer",
+    "why8": "Small batches and a boutique approach",
+    "why9": "Working with selected marbles and granites from various countries",
+    "why10": "Every piece is unique — due to the natural character of the stone"
+  },
+  "categories": {
+    "coffee-tables": "Coffee Tables",
+    "dining-tables": "Dining Tables",
+    "auxiliary-tables": "Auxiliary Tables",
+    "accessories": "Accessories"
+  },
+  "products": {
+    "title": "PRODUCTS",
+    "size": "Size",
+    "tableTop": "Table top",
+    "height": "Height",
+    "diameter": "Diameter",
+    "baseColor": "Base color",
+    "availableStones": "Available stones",
+    "viewInStore": "View in store",
+    "allProducts": "All products",
+    "productPrefix": {
+      "coffee-tables": "Marble Coffee Table",
+      "dining-tables": "Marble Dining Table",
+      "auxiliary-tables": "Marble Side Table",
+      "accessories": "Marble Accessory"
+    },
+    "zazu": {
+      "description": "Whether you're hosting guests or enjoying a quiet evening, the modern marble coffee table ZAZU enriches any space with its refined aesthetics. Its versatile form effortlessly highlights the decor placed upon it — from vases to books or a beautiful coffee set — while preserving its own sculptural charm.",
+      "description2": "Ideal for those seeking a luxurious table that combines style, durability and elegance, this piece is an investment in both form and function."
+    },
+    "bettula": {
+      "description": "The designer table BETTULA is a blend of organic form and modern elegance. This table doesn't just impress — it inspires, breaking up the space with natural lines and a carefully engineered metal base.",
+      "description2": "BETTULA is a masterpiece of natural beauty and innovative design. Crafted from high-quality marble with a smooth, unique silhouette, it highlights every space with the exquisite natural veining of the stone. The contrasting metal base with its artistic, complex design brings a sense of character and style to any interior."
+    },
+    "nayra": {
+      "description": "The marble table NAYRA stands out with its elegant, modern design featuring a marble top accentuated by fine veining, giving it a refined and sophisticated appearance.",
+      "description2": "The table features a minimalist black metal frame providing a sturdy and contemporary foundation. Its rectangular shape makes it ideal for living rooms or modern interiors."
+    },
+    "oslo": {
+      "description": "The OSLO coffee table design reflects contemporary minimalism — soft edges, simple lines and earthy tones. This makes it ideal for modern, Mediterranean or Japandi interiors."
+    },
+    "noguchi": {
+      "description": "An exquisite coffee table inspired by Isamu Noguchi, combining organic form and sculptural beauty with the rich textures of natural marble and solid wood. This design pays homage to the legendary mid-century modern vision of Noguchi — now handcrafted in marble for a refined, elegant finish.",
+      "description2": "The curved marble top rests gracefully on a sculptural base, creating a balance between art and furniture, lightness and strength. Perfect for lovers of design history, natural materials and modern interiors with character."
+    },
+    "toscana": {
+      "description": "TOSCANA is a set of two round coffee tables with a metal base. Elegant, handcrafted and fully customizable for your home.",
+      "description2": "With natural marble or granite tops and elegant metal bases, these tables are the ideal complement to both modern and classic living rooms.",
+      "description3": "Clients can fully customize the size and type of stone to suit their space and taste — from bold veining to soft neutral tones."
+    },
+    "milan-triangle": {
+      "description": "Make a bold design statement with our unique MILAN TRIANGLE set, consisting of two tables precisely crafted from natural stone. With their eye-catching geometric form and polished surface, these tables bring modern art into any space.",
+      "description2": "This set allows for dynamic styling — use them together or separately to match your interior. Clients can choose from a suggested size or fully customize the type and dimensions of the marble, creating a unique duo tailored to their interior."
+    },
+    "square": {
+      "description": "Minimalism meets bold luxury in our SQUARE coffee table, featuring a marble top with a matching marble base. Designed as a sculptural centerpiece, this table brings a sense of beauty and architectural power to any interior.",
+      "description2": "Crafted from a single type of natural stone chosen by the client, each table is made to order in our workshop, ensuring a flawless finish and unique veining pattern."
+    },
+    "bellissimo": {
+      "description": "The oval table BELLISSIMO brings together elegant design and everyday practicality. Crafted with asymmetric legs and a slim, space-saving silhouette, this marble table is a true statement — bold yet functional. Inspired by the Italian word 'bellissimo', meaning 'very beautiful', the name reflects the stunning aesthetics, graceful lines and sculptural appeal of the table.",
+      "description2": "The BELLISSIMO table was created to solve a common design challenge — finding a beautiful, narrow oval table that fits perfectly in smaller spaces. Its elegant form offers the ideal balance between visual interest and practicality, making it perfect for modern apartments, cozy dining rooms or design-focused interiors.",
+      "description3": "This table impresses not only homeowners but also architects and interior designers who appreciate its clean lines, asymmetric details and customizable structure."
+    },
+    "capri": {
+      "description": "The handcrafted marble dining table CAPRI combines the natural beauty of stone with a modern, industrial aesthetic. With its sturdy metal legs and unique marble top, every table is one of a kind — with unrepeatable patterns, colors and texture.",
+      "description2": "Suitable for a contemporary home, designer interiors or projects that emphasize natural, sustainable and luxurious materials."
+    },
+    "barcelona": {
+      "description": "The natural marble dining table BARCELONA is ideal for a living room, dining area or terrace. It will evoke beautiful emotions with its texture and stunning surface.",
+      "description2": "With its elegant design, perfect appearance and timeless style, the BARCELONA dining table is suitable for any interior.",
+      "description3": "The table's crossed base makes it easy to arrange chairs for family celebrations or dinner parties. Its minimalist design requires no additional embellishment. This table adds warmth and a Mediterranean feel to any interior."
+    },
+    "oval-console": {
+      "description": "The OVAL console table is designed to combine luxury and functionality. Crafted with a premium natural marble top and supported by an elegant powder-coated metal base, this console table is ideal for hallways, entryways, small spaces, living rooms and bedrooms."
+    },
+    "line": {
+      "description": "The marble console table LINE, crafted with an elegant metal base. This elegant piece of furniture brings a refined, minimalist look to entryways, living rooms or hallways — ideal for spaces where beauty and practicality go hand in hand.",
+      "description2": "The console table features a natural stone top in the client's stone of choice, paired with an elegant metal frame. Whether you're styling a modern apartment or a classic home, this console becomes both a design element and a practical solution."
+    },
+    "mramor": {
+      "description": "The minimalist design of the MRAMOR designer nightstand with its open shelf offers both functionality and sculptural beauty. Its design is ideal for storing your bedside essentials or arranging decorative elements.",
+      "description2": "With its smooth, polished surface, this marble nightstand is soft to the touch while maintaining its bold visual impact. Whether styled beside your bed or used as a distinctive side table, it's the perfect complement to modern, minimalist or luxurious spaces."
+    },
+    "column": {
+      "description": "Striking and architectural, the COLUMN is a handcrafted marble pedestal designed for displaying art, objects or floral arrangements. Made from natural stone, its vertical form and bold veining make it simultaneously a sculpture and a decorative element.",
+      "description2": "This piece is ideal for luxury interiors, gallery-style homes or furnished spaces where form and material take center stage."
+    },
+    "oval-tray": {
+      "description": "The marble tray OVAL is a delicate piece that combines elegance with everyday function. In the bathroom, on the vanity, in the living room or entryway, it's perfect for organizing small items and accessories, or simply adding a touch of refinement to any room."
+    },
+    "stix": {
+      "description": "Handcrafted marble utensil rests made from natural marble. Each one is unique thanks to the natural veining of the stone. Ideal for everyday use, festive dinners or as a stylish gift."
+    },
+    "marmotray": {
+      "description": "The round tray MARMOTRAY is a versatile accessory that brings sophistication to your dining table, coffee table or kitchen counter. Durable and designed to impress, it's equally suited for stylish gatherings and quiet moments at home — indoors or outdoors."
+    }
+  },
+  "stones": {
+    "title": "NATURAL STONE",
+    "subtitle": "The textures and colors of products in this catalogue are indicative. Each block and individual batch of natural stone has its own unique markings and veining, which guarantees that the pieces produced from it are unrepeatable and one of a kind.",
+    "origin": "Origin",
+    "arabescato": "Arabescato is a luxurious, natural white marble with soft parallel veining that gives it a refined appearance. Quarried in the Carrara region, it has an authentic character and limited slab availability. This marble stands out as a rarer choice, preferred for projects with a strong aesthetic value and attention to detail.",
+    "calacatta-viola": "Calacatta Viola is a stunning marble with saturated purple veining on a light, almost snow-white background. The contrast between the classic white base and the elegant burgundy tones makes this marble exceptionally effective for accents, bathrooms, tables, countertops — wherever a dramatic yet stylish touch is desired.",
+    "carrara": "White Carrara features a homogeneous, light base with discreet grey veining that crosses the slab in a natural, irregular manner. A classic in interiors where a soft, unobtrusive white marble is sought, it combines a delicate grey vein with a clean aesthetic.",
+    "crema-marfil": "Crema Marfil marble is a natural stone with fantastic texture and one of the most sought-after types of natural stone in the world. Adding Crema Marfil to any interior can instantly bring a touch of luxury to the space. This marble features narrow brown and golden veins that create a warm and distinctive appearance.",
+    "verde-guatemala": "Captivating with its deep green color and intertwining light and dark veins, Verde Guatemala is a marble that carries the vitality of tropical jungles. Paying homage to the exotic nature of Guatemala, this remarkable stone, quarried primarily in India, brings an unrepeatable sense of freshness and luxury to any interior.",
+    "brown-emperador": "Brown Emperador is a striking marble combining golden, dark and light brown tones with unique white and beige veining. Emperador represents a beautiful example of classic marble in a dark color palette, revealing the natural beauty of nature. The material is extracted from Spanish quarries in the regions of Yecla, Caudete (Albacete province) and Jumilla (Murcia region).",
+    "volakas": "Volakas marble, also known as the 'Greek Carrara', is one of the main reasons Greece is so famous for its white marbles. This magnificent stone features a predominantly snow-white background, cut through by grey, beige or brown veins. Their thickness varies from fine lines to bold, long streaks that most often descend diagonally. This natural play of forms creates a unique visual effect, making Volakas a symbol of exceptionally elegant and distinctive style.",
+    "marquina": "Nero Marquina is undeniably the most elegant black marble in existence. This high-quality black stone, dramatically cut through by magnificent white veining, is quarried in the Marquina region.",
+    "palissandro": "Palissandro is a marble with multicolored veining (brown, pink, sometimes blue) and a light base — a unique and vibrant accent stone extracted from special deposits in Italy. Its rich, decorative appearance makes it preferred for countertops, tables and other interior solutions.",
+    "sea-wave": "Sea Wave marble is a luxurious natural stone distinguished by its smoothly flowing, wave-like patterns and refined tones. Its unique character and captivating sense of movement stem from its dynamic veins, which vividly recall the expanse of the ocean.",
+    "tiffany": "Tiffany is a stone with delicate turquoise-blue and green tones — highly translucent and 'oceanic' in appearance, ideal for bold islands, countertops and vertical accents.",
+    "panda-white": "Panda White is a contrasting white stone with dramatic black veining — appearing almost like a graphic drawing with natural origins. Originating primarily from China, it's widely used for countertops, tables and walls where a strong black-and-white accent is needed.",
+    "red-jasper": "Red Jasper is a stone with a deep, saturated red color and natural, finely structured texture that creates a sense of warmth. Its rich terracotta and burgundy hues add expressiveness to any space, making it a strong accent in the interior. Suitable for crafting tables, consoles and decorative elements. Every product made from Red Jasper is unique due to the natural variations in color and structure of the material.",
+    "rainforest-brown": "Rainforest Brown is an Indian stone with rich earthy tones — a blend of warm browns, reds and cream shades, interwoven with contrasting veins reminiscent of a plant canopy or tropical forest. Suitable for countertops, tables, walls and accents where a dramatic natural texture is needed.",
+    "statuario": "Statuario is an exceptionally elegant marble with a pure white base and expressive grey veining that creates a sense of movement and natural graphics. The contrast between the light background and saturated veining gives it a luxurious and refined aura. Suitable for tables and accent pieces. Pairs harmoniously with brass and light wood, highlighting the modern and minimalist character of the space.",
+    "marmo-blue": "Marmo Blue is a luxurious natural stone representing an exclusive choice for timeless and luxurious designs. A durable onyx marble with polished and textured finishes, distinguished by its saturated blue color and natural veining.",
+    "katrin": "Katrin marble, with its balanced tones and fine veining, embodies harmony and understated beauty. Its unique character lies in its refined simplicity and timeless appeal. Rare and distinctive, Katrin is a stone of quiet elegance.",
+    "calacatta-gold": "Calacatta Gold, an emblematic Italian marble, is known for its white base accented with golden and grey veining. Its unique nobility and sense of grandeur stem from its radiant warmth. Rare and prestigious, Calacatta Gold is one of the most luxurious marbles in the world.",
+    "galaxy-granite": "Galaxy granite, a luxurious natural stone, impresses with its saturated black body accented by gleaming white and golden flecks. Its bold movements and refined elegance create a sense of cosmic grandeur. Rare and exceptionally distinctive, Galaxy granite is an excellent choice for exclusive and timeless designs.",
+    "bottocino": "Bottocino marble, quarried in Italy, is a delicate beige marble with soft cream veining. Its refined harmony and natural elegance create a sense of discreet luxury. Known for its timeless beauty, Bottocino is a classic stone that inspires admiration worldwide.",
+    "galala": "Galala marble, quarried in Egypt, is a warm beige stone with soft golden tones. Its natural harmony and serene elegance make it a refined classic. Known for its versatility, Galala carries an aura of gentle luxury."
+  },
+  "inspiration": {
+    "title": "INSPIRATION",
+    "description": "At Marbella, we believe there are no impossible things and no project is too bold. Our years of experience, our own production facility and our rich catalogue of natural stone allow us to work on projects for individual clients as well as comprehensive design solutions for corporate clients in hospitality, restaurants and architecture."
+  },
+  "footer": {
+    "address": "Sofia, 246G Lomsko Shose Blvd.",
+    "phone": "+359 89 322 0958",
+    "email": "hello@marbelladd.com",
+    "rights": "All rights reserved.",
+    "disclaimer": "The textures and colors of products in this catalogue are indicative. Each block and batch of natural stone has its own unique markings and veining, guaranteeing that every piece is unrepeatable and one of a kind."
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "back": "Back",
+    "dimensions": "Dimensions",
+    "cm": "cm"
+  }
+}
