@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { getImageUrl } from "@/lib/supabase";
 import SupabaseImage from "@/components/ui/SupabaseImage";
@@ -14,15 +13,12 @@ const inspirationImages = [
   { src: "inspiration_6.jpg" },
 ];
 
-const ITEMS_PER_PAGE = 3;
-
 export default function InspirationSection() {
   const t = useTranslations("inspiration");
-  const tCommon = useTranslations("common");
-  const [visibleCount, setVisibleCount] = useState(ITEMS_PER_PAGE);
 
-  const visibleImages = inspirationImages.slice(0, visibleCount);
-  const hasMore = visibleCount < inspirationImages.length;
+  // Split images into two columns for masonry-like layout
+  const col1 = inspirationImages.filter((_, i) => i % 2 === 0);
+  const col2 = inspirationImages.filter((_, i) => i % 2 === 1);
 
   return (
     <section id="inspiration" className="overflow-hidden bg-white py-16 md:py-24">
@@ -40,34 +36,42 @@ export default function InspirationSection() {
         </p>
       </div>
 
-      {/* Images in 2 columns */}
+      {/* Two-column gallery (no rows — images stack independently per column) */}
       <div className="px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 md:gap-x-6 gap-y-10 md:gap-y-16">
-          {visibleImages.map((image, index) => (
-            <div key={index} className="relative aspect-[4/3] overflow-hidden img-zoom">
-              <SupabaseImage
-                src={getImageUrl(image.src)}
-                alt="Marbella inspiration"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          ))}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+          {/* Column 1 */}
+          <div className="flex-1 flex flex-col gap-4 md:gap-6">
+            {col1.map((image, index) => (
+              <div key={index} className="relative overflow-hidden img-zoom">
+                <SupabaseImage
+                  src={getImageUrl(image.src)}
+                  alt="Marbella inspiration"
+                  width={800}
+                  height={index === 0 ? 600 : index === 1 ? 700 : 500}
+                  className="object-cover w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Column 2 */}
+          <div className="flex-1 flex flex-col gap-4 md:gap-6">
+            {col2.map((image, index) => (
+              <div key={index} className="relative overflow-hidden img-zoom">
+                <SupabaseImage
+                  src={getImageUrl(image.src)}
+                  alt="Marbella inspiration"
+                  width={800}
+                  height={index === 0 ? 700 : index === 1 ? 500 : 600}
+                  className="object-cover w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* See More button */}
-      {hasMore && (
-        <div className="text-center mt-12 md:mt-16">
-          <button
-            onClick={() => setVisibleCount((prev) => prev + ITEMS_PER_PAGE)}
-            className="px-8 py-3 border border-foreground/20 text-xs tracking-[0.15em] uppercase text-foreground/80 hover:bg-foreground hover:text-white transition-colors duration-300"
-          >
-            {tCommon("seeMore")}
-          </button>
-        </div>
-      )}
     </section>
   );
 }
