@@ -127,6 +127,7 @@ function MobileProductLayout({
   t: ReturnType<typeof useTranslations>;
   tc: ReturnType<typeof useTranslations>;
 }) {
+  const tCommon = useTranslations("common");
   const [showAllVariants, setShowAllVariants] = useState(false);
   const firstVariation = allVariations[0] || null;
   const restVariations = allVariations.slice(1);
@@ -229,7 +230,7 @@ function MobileProductLayout({
               onClick={() => setShowAllVariants(true)}
               className="mt-4 text-[10px] tracking-[0.15em] uppercase text-foreground/60 hover:text-foreground transition-colors border-b border-foreground/30 pb-0.5"
             >
-              {useTranslations("common")("seeAllVariants")} ({allVariations.length})
+              {tCommon("seeAllVariants")} ({allVariations.length})
             </button>
           )}
         </div>
