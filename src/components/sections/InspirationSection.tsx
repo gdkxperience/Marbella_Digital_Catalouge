@@ -77,7 +77,7 @@ export default function InspirationSection() {
           </div>
 
           {/* Mobile title — shown only on small screens */}
-          <div className="md:hidden py-8 px-4 text-right">
+          <div className="md:hidden py-8 px-4 text-center">
             <h2 className="text-3xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
               {t("title")}
             </h2>

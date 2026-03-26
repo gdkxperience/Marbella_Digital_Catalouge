@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { getImageUrl } from "@/lib/supabase";
 import SupabaseImage from "@/components/ui/SupabaseImage";
 
@@ -23,13 +23,38 @@ const whyReasons: React.ReactNode[] = [
   <><span className="font-semibold">Всяко изделие е уникално</span> - заради естествения характер на камъка</>,
 ];
 
+function AboutTextMobile() {
+  const [expanded, setExpanded] = useState(false);
+  const firstParagraph = aboutText[0];
+  const restParagraphs = aboutText.slice(1);
+
+  return (
+    <div className="space-y-3 text-xs text-foreground leading-[1.9]">
+      <p>
+        <span className="text-foreground font-medium">Marbella</span>{" "}
+        {firstParagraph.replace("Marbella ", "")}
+      </p>
+      {!expanded ? (
+        <button
+          onClick={() => setExpanded(true)}
+          className="text-[10px] tracking-[0.15em] uppercase text-foreground/60 hover:text-foreground transition-colors border-b border-foreground/30 pb-0.5"
+        >
+          Прочети повече
+        </button>
+      ) : (
+        restParagraphs.map((p, i) => <p key={i}>{p}</p>)
+      )}
+    </div>
+  );
+}
+
 export default function AboutSection() {
   return (
     <section id="about" className="overflow-hidden">
       {/* Full-bleed editorial spread */}
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[50vh] md:min-h-[70vh]">
-        {/* Left — full bleed image */}
-        <div className="relative min-h-[40vh] lg:min-h-full img-zoom">
+        {/* Left — full bleed image (hidden on mobile) */}
+        <div className="relative min-h-[40vh] lg:min-h-full img-zoom hidden md:block">
           <SupabaseImage
             src={getImageUrl("about_us_cover.jpg")}
             alt="Marbella workshop"
@@ -41,17 +66,18 @@ export default function AboutSection() {
         </div>
 
         {/* Right — text column */}
-        <div className="bg-white flex flex-col justify-center px-8 py-12 md:px-14 lg:px-20 xl:px-28">
-          {/* Section title — right-aligned */}
-          <div className="flex justify-end mb-8">
+        <div className="bg-white flex flex-col justify-center px-6 py-10 md:px-14 lg:px-20 xl:px-28 md:py-12">
+          {/* Section title — center on mobile, right on desktop */}
+          <div className="flex justify-center md:justify-end mb-8">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
               ЗА НАС
             </h2>
           </div>
 
-          <div className="w-12 h-px bg-foreground/20 mb-8" />
+          <div className="w-12 h-px bg-foreground/20 mb-8 mx-auto md:mx-0" />
 
-          <div className="space-y-3 text-xs text-foreground leading-[1.9]">
+          {/* Desktop: show all text */}
+          <div className="hidden md:block space-y-3 text-xs text-foreground leading-[1.9]">
             {aboutText.map((p, i) => (
               <p key={i}>
                 {i === 0 ? (
@@ -66,16 +92,21 @@ export default function AboutSection() {
             ))}
           </div>
 
+          {/* Mobile: truncated with read more */}
+          <div className="md:hidden">
+            <AboutTextMobile />
+          </div>
+
           {/* Why Choose Marbella */}
           <div className="mt-10">
             <h3 className="text-xs md:text-sm tracking-[0.25em] uppercase font-normal text-foreground mb-6 text-center">
               ЗАЩО ДА ИЗБЕРЕТЕ <span className="font-bold">MARBELLA</span>
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2.5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1 md:gap-y-2.5">
               {whyReasons.map((reason, i) => (
-                <div key={i} className="flex items-start gap-2.5">
-                  <span className="text-[8px] text-foreground/70 mt-[5px] flex-shrink-0">◆</span>
-                  <p className="text-xs text-foreground leading-[1.8] tracking-wide">
+                <div key={i} className="flex items-start gap-2">
+                  <span className="text-[7px] md:text-[8px] text-foreground/70 mt-[5px] flex-shrink-0">◆</span>
+                  <p className="text-[11px] md:text-xs text-foreground leading-[1.6] md:leading-[1.8] tracking-wide">
                     {reason}
                   </p>
                 </div>

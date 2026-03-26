@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   products,
@@ -120,8 +121,137 @@ function parseDimensions(sizes: SizeOption[]): {
   return { tableTops: uniqueTops, heights };
 }
 
+/* ── Mobile product layout: name → cover → info → variants (expandable) ── */
+function MobileProductLayout({
+  product,
+  showSectionTitle,
+  isFirstInCategory,
+  detailsBlock,
+  allVariations,
+  t,
+  tc,
+}: {
+  product: Product;
+  showSectionTitle?: boolean;
+  isFirstInCategory?: boolean;
+  detailsBlock: React.ReactNode;
+  allVariations: { filename: string; label: string }[];
+  t: ReturnType<typeof useTranslations>;
+  tc: ReturnType<typeof useTranslations>;
+}) {
+  const [showAllVariants, setShowAllVariants] = useState(false);
+  const firstVariation = allVariations[0] || null;
+  const restVariations = allVariations.slice(1);
+  const hasMore = restVariations.length > 0;
+
+  return (
+    <div className="md:hidden">
+      {/* Header: section title + category + product name */}
+      <div className="bg-white px-4 pt-10 pb-4">
+        {showSectionTitle && (
+          <div className="flex justify-center mb-10">
+            <h2 className="text-3xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
+              {t("title")}
+            </h2>
+          </div>
+        )}
+
+        {/* Category label — only first in category on mobile */}
+        {isFirstInCategory && (
+          <div className="inline-block mb-4">
+            <p className="text-[11px] tracking-[0.2em] uppercase text-foreground font-medium mb-1.5">
+              {tc(product.category)}
+            </p>
+            <div className="w-full h-[1px] bg-foreground/70" />
+          </div>
+        )}
+
+        {/* Product Name */}
+        <h3 className="text-sm tracking-[0.08em] uppercase leading-relaxed">
+          <span className="font-extralight">{t(`productPrefix.${product.category}`)} </span>
+          <span className="font-semibold">{product.name}</span>
+        </h3>
+      </div>
+
+      {/* Cover image */}
+      <div className="relative aspect-[4/3] overflow-hidden bg-white">
+        <SupabaseImage
+          src={getImageUrl(product.image)}
+          alt={product.name}
+          fill
+          className={`${product.coverContain ? "object-contain" : "object-cover"}`}
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Info: sizes, description, store button */}
+      <div className="bg-white px-4 py-5">
+        {detailsBlock}
+      </div>
+
+      {/* Variants section */}
+      {(firstVariation || allVariations.length === 0) && (
+        <div className="bg-white px-4 pb-6">
+          {/* Variants label */}
+          {allVariations.length > 0 && (
+            <p className="text-[10px] tracking-[0.2em] uppercase text-foreground/60 mb-3">
+              {t("availableStones")}
+            </p>
+          )}
+
+          {/* First variant always visible */}
+          {firstVariation && (
+            <div>
+              <div className="relative aspect-[4/3] overflow-hidden bg-white">
+                <SupabaseImage
+                  src={getImageUrl(firstVariation.filename)}
+                  alt={`${product.name} – ${firstVariation.label}`}
+                  fill
+                  className="object-contain object-center"
+                  sizes="100vw"
+                />
+              </div>
+              <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
+                {firstVariation.label}
+              </p>
+            </div>
+          )}
+
+          {/* Expanded variants */}
+          {showAllVariants && restVariations.map((v) => (
+            <div key={v.filename} className="mt-4">
+              <div className="relative aspect-[4/3] overflow-hidden bg-white">
+                <SupabaseImage
+                  src={getImageUrl(v.filename)}
+                  alt={`${product.name} – ${v.label}`}
+                  fill
+                  className="object-contain object-center"
+                  sizes="100vw"
+                />
+              </div>
+              <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
+                {v.label}
+              </p>
+            </div>
+          ))}
+
+          {/* See all variants button */}
+          {hasMore && !showAllVariants && (
+            <button
+              onClick={() => setShowAllVariants(true)}
+              className="mt-4 text-[10px] tracking-[0.15em] uppercase text-foreground/60 hover:text-foreground transition-colors border-b border-foreground/30 pb-0.5"
+            >
+              Виж всички варианти ({allVariations.length})
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ── Single product spread — two-page print catalogue style ── */
-function ProductSpread({ product, showSectionTitle }: { product: Product; showSectionTitle?: boolean }) {
+function ProductSpread({ product, showSectionTitle, isFirstInCategory }: { product: Product; showSectionTitle?: boolean; isFirstInCategory?: boolean }) {
   const t = useTranslations("products");
   const tc = useTranslations("categories");
 
@@ -148,27 +278,156 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
   const { tableTops, heights } = parseDimensions(product.sizes);
   const productPrefix = t(`productPrefix.${product.category}`);
 
+  /* Product name block */
+  const nameBlock = (
+    <h3 className="text-sm lg:text-base tracking-[0.08em] uppercase mb-8 leading-relaxed">
+      <span className="font-extralight">{productPrefix} </span>
+      <span className="font-semibold">{product.name}</span>
+    </h3>
+  );
+
+  /* Details block (sizes, description, store link) — no name */
+  const detailsBlock = (
+    <>
+      {/* Table top sizes */}
+      {tableTops.length > 0 && (
+        <div className="mb-2">
+          <p className="text-xs text-foreground/80 tracking-wide">
+            <span className="font-semibold">{t("tableTop")}:</span>{" "}
+            {tableTops.join(" | ")}
+          </p>
+        </div>
+      )}
+
+      {/* Heights */}
+      {heights.length > 0 && (
+        <div className="mb-2">
+          <p className="text-xs text-foreground/80 tracking-wide">
+            <span className="font-semibold">{t("height")}:</span>{" "}
+            {heights.join(" | ")}
+          </p>
+        </div>
+      )}
+
+      {/* Base colors */}
+      {product.baseColors && product.baseColors.length > 0 && (
+        <div className="mb-2">
+          <p className="text-xs text-foreground/80 tracking-wide">
+            <span className="font-semibold">{t("baseColor")}:</span>{" "}
+            {product.baseColors.join(" | ")}
+          </p>
+        </div>
+      )}
+
+      <div className="mb-4" />
+
+      {/* Description */}
+      {fullDescription && (
+        <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide mb-4">
+          {fullDescription.length > 350
+            ? fullDescription.substring(0, 350) + "…"
+            : fullDescription}
+        </p>
+      )}
+
+      {/* View in store link */}
+      {product.storeUrl && (
+        <div className="mb-6">
+          <a
+            href={product.storeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline text-[10px] tracking-[0.2em] uppercase text-foreground/80 hover:text-foreground transition-all duration-300"
+          >
+            <span className="border-b border-foreground/50 hover:border-foreground pb-0.5">
+              {t("viewInStore")} →
+            </span>
+          </a>
+        </div>
+      )}
+    </>
+  );
+
+  /* Combined info block for desktop (name + details) */
+  const infoBlock = (
+    <>
+      {nameBlock}
+      {detailsBlock}
+    </>
+  );
+
+  /* Shared variants block */
+  const variantsBlock = (
+    <div className="flex flex-col gap-2">
+      {firstThree.length > 0 ? (
+        firstThree.map((v) => (
+          <div key={v.filename}>
+            <div className="relative aspect-[4/3] overflow-hidden bg-white">
+              <SupabaseImage
+                src={getImageUrl(v.filename)}
+                alt={`${product.name} – ${v.label}`}
+                fill
+                className="object-contain object-center"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
+            <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
+              {v.label}
+            </p>
+          </div>
+        ))
+      ) : (
+        <div>
+          <div className="relative aspect-[4/3] overflow-hidden bg-white">
+            <SupabaseImage
+              src={getImageUrl(product.image)}
+              alt={product.name}
+              fill
+              className="object-contain object-center"
+              sizes="25vw"
+            />
+          </div>
+          <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
+            {product.name}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <div className="block group">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[50vh] md:min-h-[70vh]">
+      {/* ── MOBILE LAYOUT: name → cover → info/button → variants ── */}
+      <MobileProductLayout
+        product={product}
+        showSectionTitle={showSectionTitle}
+        isFirstInCategory={isFirstInCategory}
+        detailsBlock={detailsBlock}
+        allVariations={variations}
+        t={t}
+        tc={tc}
+      />
+
+      {/* ── DESKTOP LAYOUT: cover left, details right (unchanged) ── */}
+      <div className="hidden md:grid grid-cols-2 min-h-[50vh] md:min-h-[70vh]">
         {/* ── LEFT HALF: Cover image — full bleed ── */}
-        <div className="relative min-h-[40vh] md:min-h-full overflow-hidden bg-white">
+        <div className="relative min-h-full overflow-hidden bg-white">
           <SupabaseImage
             src={getImageUrl(product.image)}
             alt={product.name}
             fill
             className={`${product.coverContain ? "object-contain" : "object-cover"} transition-transform duration-1000 group-hover:scale-[1.02]`}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="50vw"
           />
         </div>
 
         {/* ── RIGHT HALF: Two-column details ── */}
-        <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 flex items-center">
+        <div className="bg-white p-6 lg:p-8 xl:p-10 flex items-center">
           <div className="w-full">
             {/* Section title — only on first product */}
             {showSectionTitle && (
               <div className="flex justify-end mb-10">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
+                <h2 className="text-4xl lg:text-5xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
                   {t("title")}
                 </h2>
               </div>
@@ -176,136 +435,38 @@ function ProductSpread({ product, showSectionTitle }: { product: Product; showSe
 
             {/* Category label */}
             <div className="inline-block mb-10">
-              <p className="text-sm md:text-base tracking-[0.3em] uppercase text-foreground font-medium mb-2">
+              <p className="text-base tracking-[0.3em] uppercase text-foreground font-medium mb-2">
                 {tc(product.category)}
               </p>
               <div className="w-full h-[1.5px] bg-foreground/80" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
-            {/* ── Sub-column 1: Variation images (max 3) ── */}
-            <div className="flex flex-col gap-2">
-              {firstThree.length > 0 ? (
-                firstThree.map((v) => (
-                  <div key={v.filename}>
+            <div className="grid grid-cols-2 gap-6 lg:gap-10">
+              {/* ── Sub-column 1: Variation images ── */}
+              {variantsBlock}
+
+              {/* ── Sub-column 2: Name, sizes, description, 4th variation ── */}
+              <div className="flex flex-col">
+                {infoBlock}
+
+                {/* 4th variation — under description */}
+                {fourthVariation && (
+                  <div className="mt-auto pt-4">
                     <div className="relative aspect-[4/3] overflow-hidden bg-white">
                       <SupabaseImage
-                        src={getImageUrl(v.filename)}
-                        alt={`${product.name} – ${v.label}`}
+                        src={getImageUrl(fourthVariation.filename)}
+                        alt={`${product.name} – ${fourthVariation.label}`}
                         fill
                         className="object-contain object-center"
-                        sizes="(max-width: 768px) 50vw, 25vw"
+                        sizes="25vw"
                       />
                     </div>
                     <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
-                      {v.label}
+                      {fourthVariation.label}
                     </p>
                   </div>
-                ))
-              ) : (
-                <div>
-                  <div className="relative aspect-[4/3] overflow-hidden bg-white">
-                    <SupabaseImage
-                      src={getImageUrl(product.image)}
-                      alt={product.name}
-                      fill
-                      className="object-contain object-center"
-                      sizes="25vw"
-                    />
-                  </div>
-                  <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
-                    {product.name}
-                  </p>
-                </div>
-              )}
-            </div>
-
-            {/* ── Sub-column 2: Name, sizes, description, 4th variation ── */}
-            <div className="flex flex-col">
-              {/* Product Name: "Marble Coffee Table NAYRA" */}
-              <h3 className="text-sm lg:text-base tracking-[0.08em] uppercase mb-8 leading-relaxed">
-                <span className="font-extralight">{productPrefix} </span>
-                <span className="font-semibold">{product.name}</span>
-              </h3>
-
-
-              {/* Table top sizes */}
-              {tableTops.length > 0 && (
-                <div className="mb-2">
-                  <p className="text-xs text-foreground/80 tracking-wide">
-                    <span className="font-semibold">{t("tableTop")}:</span>{" "}
-                    {tableTops.join(" | ")}
-                  </p>
-                </div>
-              )}
-
-              {/* Heights */}
-              {heights.length > 0 && (
-                <div className="mb-2">
-                  <p className="text-xs text-foreground/80 tracking-wide">
-                    <span className="font-semibold">{t("height")}:</span>{" "}
-                    {heights.join(" | ")}
-                  </p>
-                </div>
-              )}
-
-              {/* Base colors */}
-              {product.baseColors && product.baseColors.length > 0 && (
-                <div className="mb-2">
-                  <p className="text-xs text-foreground/80 tracking-wide">
-                    <span className="font-semibold">{t("baseColor")}:</span>{" "}
-                    {product.baseColors.join(" | ")}
-                  </p>
-                </div>
-              )}
-
-              {/* Spacing before description */}
-              <div className="mb-4" />
-
-              {/* Description */}
-              {fullDescription && (
-                <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide mb-4">
-                  {fullDescription.length > 350
-                    ? fullDescription.substring(0, 350) + "…"
-                    : fullDescription}
-                </p>
-              )}
-
-              {/* View in store link */}
-              {product.storeUrl && (
-                <div className="mb-6">
-                  <a
-                    href={product.storeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline text-[10px] tracking-[0.2em] uppercase text-foreground/80 hover:text-foreground transition-all duration-300"
-                  >
-                    <span className="border-b border-foreground/50 hover:border-foreground pb-0.5">
-                      {t("viewInStore")} →
-                    </span>
-                  </a>
-                </div>
-              )}
-
-              {/* 4th variation — under description */}
-              {fourthVariation && (
-                <div className="mt-auto pt-4">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-white">
-                    <SupabaseImage
-                      src={getImageUrl(fourthVariation.filename)}
-                      alt={`${product.name} – ${fourthVariation.label}`}
-                      fill
-                      className="object-contain object-center"
-                      sizes="25vw"
-                    />
-                  </div>
-                  <p className="text-xs tracking-[0.08em] text-foreground/75 mt-1.5">
-                    {fourthVariation.label}
-                  </p>
-                </div>
-              )}
-
-            </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -344,17 +505,17 @@ function AccessoriesSpread() {
               <div className="w-full h-[1.5px] bg-foreground/80" />
             </div>
 
-            {/* Accessories — image left, info right */}
+            {/* Accessories — stacked on mobile, side-by-side on desktop */}
             <div className="flex flex-col gap-8">
               {accessories.map((item) => (
-                <div key={item.name} className="flex gap-4">
-                  <div className="relative w-36 h-36 md:w-44 md:h-44 flex-shrink-0 overflow-hidden bg-white">
+                <div key={item.name} className="flex flex-col md:flex-row gap-3 md:gap-4">
+                  <div className="relative w-full aspect-square md:w-44 md:h-44 md:aspect-auto flex-shrink-0 overflow-hidden bg-white">
                     <SupabaseImage
                       src={getImageUrl(item.image)}
                       alt={item.name}
                       fill
                       className="object-contain object-center"
-                      sizes="150px"
+                      sizes="(max-width: 768px) 100vw, 150px"
                     />
                   </div>
                   <div className="flex-1 min-w-0 flex flex-col justify-center">
@@ -407,6 +568,7 @@ export default function ProductsSection() {
                   key={product.slug}
                   product={product}
                   showSectionTitle={catIdx === 0 && prodIdx === 0}
+                  isFirstInCategory={prodIdx === 0}
                 />
               ))}
             </div>

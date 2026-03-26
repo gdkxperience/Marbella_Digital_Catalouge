@@ -10,33 +10,59 @@ function StoneCard({ stone, t }: { stone: Stone; t: ReturnType<typeof useTransla
   const description = t.has(stone.slug) ? t(stone.slug) : "";
 
   return (
-    <div className="flex gap-5">
-      {/* Stone image */}
-      <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 overflow-hidden bg-warm-gray">
-        <SupabaseImage
-          src={getImageUrl(stone.image)}
-          alt={stone.name}
-          fill
-          className="object-cover object-center scale-[2]"
-          sizes="160px"
-        />
+    <>
+      {/* Mobile: full width image, text below */}
+      <div className="md:hidden">
+        <div className="relative w-full aspect-square overflow-hidden bg-warm-gray">
+          <SupabaseImage
+            src={getImageUrl(stone.image)}
+            alt={stone.name}
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
+        <div className="mt-3">
+          <h4 className="text-xs tracking-[0.1em] uppercase font-semibold leading-tight">
+            {stone.name}
+          </h4>
+          <p className="text-[11px] text-muted-light tracking-wide mt-1">
+            {stone.origin}
+          </p>
+          {description && (
+            <p className="text-[11px] text-foreground/75 leading-[1.8] tracking-wide mt-2 line-clamp-5">
+              {description}
+            </p>
+          )}
+        </div>
       </div>
 
-      {/* Stone info */}
-      <div className="flex-1 min-w-0">
-        <h4 className="text-xs md:text-sm tracking-[0.1em] uppercase font-semibold leading-tight">
-          {stone.name}
-        </h4>
-        <p className="text-[11px] text-muted-light tracking-wide mt-1">
-          {stone.origin}
-        </p>
-        {description && (
-          <p className="text-[11px] text-foreground/75 leading-[1.8] tracking-wide mt-2 line-clamp-5">
-            {description}
+      {/* Desktop: image left, info right */}
+      <div className="hidden md:flex gap-5">
+        <div className="relative w-40 h-40 flex-shrink-0 overflow-hidden bg-warm-gray">
+          <SupabaseImage
+            src={getImageUrl(stone.image)}
+            alt={stone.name}
+            fill
+            className="object-cover object-center scale-[2]"
+            sizes="160px"
+          />
+        </div>
+        <div className="flex-1 min-w-0">
+          <h4 className="text-sm tracking-[0.1em] uppercase font-semibold leading-tight">
+            {stone.name}
+          </h4>
+          <p className="text-[11px] text-muted-light tracking-wide mt-1">
+            {stone.origin}
           </p>
-        )}
+          {description && (
+            <p className="text-[11px] text-foreground/75 leading-[1.8] tracking-wide mt-2 line-clamp-5">
+              {description}
+            </p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -71,7 +97,7 @@ export default function StonesSection() {
         <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 flex items-center">
           <div className="w-full">
             {/* Section title — right-aligned, slightly smaller */}
-            <div className="flex justify-end mb-10">
+            <div className="flex justify-center md:justify-end mb-10">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight tracking-[0.15em] uppercase text-foreground leading-none select-none">
                 {t("title")}
               </h2>
