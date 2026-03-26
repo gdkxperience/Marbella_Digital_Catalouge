@@ -19,21 +19,9 @@ const categories: ProductCategory[] = [
 ];
 
 const accessories = [
-  {
-    image: "accessory_podnos_oval.webp",
-    name: "Мраморен поднос OVAL",
-    description: "Мраморният поднос OVAL e деликатен елемент, който съчетава елегантност с ежедневна функция. В банята, на тоалетката, в дневната или антрето, той е перфектен за организиране на дребни вещи и аксесоари, или просто за добавяне на нотка изисканост към помещението.",
-  },
-  {
-    image: "accessory_cutlery_holder_stix.webp",
-    name: "Поставка за прибори STIX",
-    description: "Ръчно изработени мраморни поставки за прибори от естествен мрамор. Всяка е уникална благодарение на естествените шарки на камъка. Идеални за ежедневна употреба, празнични вечери или стилен подарък.",
-  },
-  {
-    image: "accessory_podnos_mramotray.webp",
-    name: "Мраморен поднос MARMOTRAY",
-    description: "Кръглият поднос MARMOTRAY е универсален аксесоар, който внася изтънченост на вашата маса за хранене, масичка за кафе или кухненски плот. Издръжлив и проектиран да впечатлява, той е еднакво подходяща както за стилни събирания, така и за тихи моменти у дома - на закрито или открито.",
-  },
+  { image: "accessory_podnos_oval.webp", slug: "oval-tray" },
+  { image: "accessory_cutlery_holder_stix.webp", slug: "stix" },
+  { image: "accessory_podnos_mramotray.webp", slug: "marmotray" },
 ];
 
 /* ── Extract variation label from filename ── */
@@ -241,7 +229,7 @@ function MobileProductLayout({
               onClick={() => setShowAllVariants(true)}
               className="mt-4 text-[10px] tracking-[0.15em] uppercase text-foreground/60 hover:text-foreground transition-colors border-b border-foreground/30 pb-0.5"
             >
-              Виж всички варианти ({allVariations.length})
+              {useTranslations("common")("seeAllVariants")} ({allVariations.length})
             </button>
           )}
         </div>
@@ -494,11 +482,11 @@ function AccessoriesSpread() {
 
         <div className="flex flex-col gap-14">
           {accessories.map((item) => (
-            <div key={item.name} className="flex flex-col gap-4">
+            <div key={item.slug} className="flex flex-col gap-4">
               <div className="relative w-full aspect-square overflow-hidden bg-white">
                 <SupabaseImage
                   src={getImageUrl(item.image)}
-                  alt={item.name}
+                  alt={t(`${item.slug}.name`)}
                   fill
                   className="object-cover"
                   sizes="100vw"
@@ -506,10 +494,10 @@ function AccessoriesSpread() {
               </div>
               <div>
                 <h4 className="text-xs tracking-[0.08em] font-semibold mb-2">
-                  {item.name}
+                  {t(`${item.slug}.name`)}
                 </h4>
                 <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide">
-                  {item.description}
+                  {t(`${item.slug}.description`)}
                 </p>
               </div>
             </div>
@@ -537,7 +525,7 @@ function AccessoriesSpread() {
         <div className="relative min-h-full overflow-hidden bg-white">
           <SupabaseImage
             src={getImageUrl("accessories_cover_podnos_oval.webp")}
-            alt="Marbella Accessories"
+            alt={tc("accessories")}
             fill
             className="object-cover"
             sizes="50vw"
@@ -556,11 +544,11 @@ function AccessoriesSpread() {
 
             <div className="flex flex-col gap-8">
               {accessories.map((item) => (
-                <div key={item.name} className="flex flex-row gap-4">
+                <div key={item.slug} className="flex flex-row gap-4">
                   <div className="relative w-44 h-44 flex-shrink-0 overflow-hidden bg-white">
                     <SupabaseImage
                       src={getImageUrl(item.image)}
-                      alt={item.name}
+                      alt={t(`${item.slug}.name`)}
                       fill
                       className="object-contain object-center"
                       sizes="150px"
@@ -568,10 +556,10 @@ function AccessoriesSpread() {
                   </div>
                   <div className="flex-1 min-w-0 flex flex-col justify-center">
                     <h4 className="text-xs tracking-[0.08em] font-semibold mb-2">
-                      {item.name}
+                      {t(`${item.slug}.name`)}
                     </h4>
                     <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide">
-                      {item.description}
+                      {t(`${item.slug}.description`)}
                     </p>
                   </div>
                 </div>
