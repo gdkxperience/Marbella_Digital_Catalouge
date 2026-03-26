@@ -19,21 +19,9 @@ const categories: ProductCategory[] = [
 ];
 
 const accessories = [
-  {
-    image: "accessory_podnos_oval.webp",
-    name: "Мраморен поднос OVAL",
-    description: "Мраморният поднос OVAL e деликатен елемент, който съчетава елегантност с ежедневна функция. В банята, на тоалетката, в дневната или антрето, той е перфектен за организиране на дребни вещи и аксесоари, или просто за добавяне на нотка изисканост към помещението.",
-  },
-  {
-    image: "accessory_cutlery_holder_stix.webp",
-    name: "Поставка за прибори STIX",
-    description: "Ръчно изработени мраморни поставки за прибори от естествен мрамор. Всяка е уникална благодарение на естествените шарки на камъка. Идеални за ежедневна употреба, празнични вечери или стилен подарък.",
-  },
-  {
-    image: "accessory_podnos_mramotray.webp",
-    name: "Мраморен поднос MARMOTRAY",
-    description: "Кръглият поднос MARMOTRAY е универсален аксесоар, който внася изтънченост на вашата маса за хранене, масичка за кафе или кухненски плот. Издръжлив и проектиран да впечатлява, той е еднакво подходяща както за стилни събирания, така и за тихи моменти у дома - на закрито или открито.",
-  },
+  { image: "accessory_podnos_oval.webp", slug: "oval-tray" },
+  { image: "accessory_cutlery_holder_stix.webp", slug: "stix" },
+  { image: "accessory_podnos_mramotray.webp", slug: "marmotray" },
 ];
 
 /* ── Extract variation label from filename ── */
@@ -241,7 +229,7 @@ function MobileProductLayout({
               onClick={() => setShowAllVariants(true)}
               className="mt-4 text-[10px] tracking-[0.15em] uppercase text-foreground/60 hover:text-foreground transition-colors border-b border-foreground/30 pb-0.5"
             >
-              Виж всички варианти ({allVariations.length})
+              {useTranslations("common")("seeAllVariants")} ({allVariations.length})
             </button>
           )}
         </div>
@@ -475,59 +463,120 @@ function ProductSpread({ product, showSectionTitle, isFirstInCategory }: { produ
   );
 }
 
-/* ── Accessories spread — no cover, items with spacing ── */
+/* ── Accessories spread — mobile: no cover + spacing; desktop: original cover layout ── */
 function AccessoriesSpread() {
   const tc = useTranslations("categories");
   const t = useTranslations("products");
 
   return (
     <div className="block">
-      <div className="bg-white px-4 md:px-10 lg:px-14 xl:px-20 py-16 md:py-24">
-        <div className="max-w-6xl mx-auto">
-          {/* Category label with underline */}
-          <div className="inline-block mb-12 md:mb-16">
-            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-foreground font-medium mb-2">
-              {tc("accessories")}
-            </p>
-            <div className="w-full h-[1.5px] bg-foreground/80" />
-          </div>
+      {/* ── MOBILE LAYOUT: no cover, items stacked with spacing ── */}
+      <div className="md:hidden px-4 py-16">
+        {/* Category label with underline */}
+        <div className="inline-block mb-12">
+          <p className="text-sm tracking-[0.3em] uppercase text-foreground font-medium mb-2">
+            {tc("accessories")}
+          </p>
+          <div className="w-full h-[1.5px] bg-foreground/80" />
+        </div>
 
-          {/* Accessories — stacked with more space between items */}
-          <div className="flex flex-col gap-14 md:gap-20">
-            {accessories.map((item, idx) => (
-              <div key={item.name} className="flex flex-col md:flex-row gap-4 md:gap-6">
-                <div className={`relative w-full aspect-square md:w-52 md:h-52 md:aspect-auto flex-shrink-0 overflow-hidden bg-white ${idx === 0 ? "" : ""}`}>
-                  <SupabaseImage
-                    src={getImageUrl(item.image)}
-                    alt={item.name}
-                    fill
-                    className="object-contain object-left"
-                    sizes="(max-width: 768px) 100vw, 200px"
-                  />
-                </div>
-                <div className="flex-1 min-w-0 flex flex-col justify-center">
-                  <h4 className="text-xs tracking-[0.08em] font-semibold mb-2">
-                    {item.name}
-                  </h4>
-                  <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide">
-                    {item.description}
-                  </p>
-                </div>
+        <div className="flex flex-col gap-14">
+          {accessories.map((item) => (
+            <div key={item.slug} className="flex flex-col gap-4">
+              <div className="relative w-full aspect-square overflow-hidden bg-white">
+                <SupabaseImage
+                  src={getImageUrl(item.image)}
+                  alt={t(`${item.slug}.name`)}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                />
               </div>
-            ))}
+              <div>
+                <h4 className="text-xs tracking-[0.08em] font-semibold mb-2">
+                  {t(`${item.slug}.name`)}
+                </h4>
+                <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide">
+                  {t(`${item.slug}.description`)}
+                </p>
+              </div>
+            </div>
+          ))}
 
-            {/* View accessories in store */}
-            <div className="mt-4">
-              <a
-                href="https://marbelladd.com/collections/accessories"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline text-[10px] tracking-[0.2em] uppercase text-foreground/80 hover:text-foreground transition-all duration-300"
-              >
-                <span className="border-b border-foreground/50 hover:border-foreground pb-0.5">
-                  {t("viewInStore")} →
-                </span>
-              </a>
+          {/* View accessories in store */}
+          <div className="mt-4">
+            <a
+              href="https://marbelladd.com/collections/accessories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline text-[10px] tracking-[0.2em] uppercase text-foreground/80 hover:text-foreground transition-all duration-300"
+            >
+              <span className="border-b border-foreground/50 hover:border-foreground pb-0.5">
+                {t("viewInStore")} →
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* ── DESKTOP LAYOUT: original cover left + items right ── */}
+      <div className="hidden md:grid grid-cols-2 min-h-[70vh]">
+        {/* Cover image */}
+        <div className="relative min-h-full overflow-hidden bg-white">
+          <SupabaseImage
+            src={getImageUrl("accessories_cover_podnos_oval.webp")}
+            alt={tc("accessories")}
+            fill
+            className="object-cover"
+            sizes="50vw"
+          />
+        </div>
+
+        {/* Category label + variants */}
+        <div className="bg-white p-6 lg:p-8 xl:p-10 flex items-center">
+          <div className="w-full">
+            <div className="inline-block mb-10">
+              <p className="text-base tracking-[0.3em] uppercase text-foreground font-medium mb-2">
+                {tc("accessories")}
+              </p>
+              <div className="w-full h-[1.5px] bg-foreground/80" />
+            </div>
+
+            <div className="flex flex-col gap-8">
+              {accessories.map((item) => (
+                <div key={item.slug} className="flex flex-row gap-4">
+                  <div className="relative w-44 h-44 flex-shrink-0 overflow-hidden bg-white">
+                    <SupabaseImage
+                      src={getImageUrl(item.image)}
+                      alt={t(`${item.slug}.name`)}
+                      fill
+                      className="object-contain object-center"
+                      sizes="150px"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0 flex flex-col justify-center">
+                    <h4 className="text-xs tracking-[0.08em] font-semibold mb-2">
+                      {t(`${item.slug}.name`)}
+                    </h4>
+                    <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide">
+                      {t(`${item.slug}.description`)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+              <div className="mt-4">
+                <a
+                  href="https://marbelladd.com/collections/accessories"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline text-[10px] tracking-[0.2em] uppercase text-foreground/80 hover:text-foreground transition-all duration-300"
+                >
+                  <span className="border-b border-foreground/50 hover:border-foreground pb-0.5">
+                    {t("viewInStore")} →
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -548,7 +597,7 @@ export default function ProductsSection() {
 
         return (
           <div key={cat} className="mt-16 md:mt-24 first:mt-0">
-            <div className="space-y-16 md:space-y-24">
+            <div className="space-y-6 md:space-y-24">
               {catProducts.map((product, prodIdx) => (
                 <ProductSpread
                   key={product.slug}

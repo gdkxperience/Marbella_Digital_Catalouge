@@ -118,12 +118,15 @@
       "description2": "This piece is ideal for luxury interiors, gallery-style homes or furnished spaces where form and material take center stage."
     },
     "oval-tray": {
+      "name": "Marble Tray OVAL",
       "description": "The marble tray OVAL is a delicate piece that combines elegance with everyday function. In the bathroom, on the vanity, in the living room or entryway, it's perfect for organizing small items and accessories, or simply adding a touch of refinement to any room."
     },
     "stix": {
+      "name": "Utensil Rest STIX",
       "description": "Handcrafted marble utensil rests made from natural marble. Each one is unique thanks to the natural veining of the stone. Ideal for everyday use, festive dinners or as a stylish gift."
     },
     "marmotray": {
+      "name": "Marble Tray MARMOTRAY",
       "description": "The round tray MARMOTRAY is a versatile accessory that brings sophistication to your dining table, coffee table or kitchen counter. Durable and designed to impress, it's equally suited for stylish gatherings and quiet moments at home — indoors or outdoors."
     }
   },
@@ -177,6 +180,7 @@
     "learnMore": "Learn more",
     "viewAll": "View all",
     "seeMore": "See More",
+    "seeAllVariants": "See all variants",
     "back": "Back",
     "dimensions": "Dimensions",
     "cm": "cm"
