@@ -475,73 +475,59 @@ function ProductSpread({ product, showSectionTitle, isFirstInCategory }: { produ
   );
 }
 
-/* ── Accessories spread — single section, cover left, all items as variants right ── */
+/* ── Accessories spread — no cover, items with spacing ── */
 function AccessoriesSpread() {
   const tc = useTranslations("categories");
   const t = useTranslations("products");
 
   return (
     <div className="block">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[50vh] md:min-h-[70vh]">
-        {/* ── LEFT HALF: Cover image — full bleed ── */}
-        <div className="relative min-h-[40vh] md:min-h-full overflow-hidden bg-white">
-          <SupabaseImage
-            src={getImageUrl("accessories_cover_podnos_oval.webp")}
-            alt="Marbella Accessories"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
+      <div className="bg-white px-4 md:px-10 lg:px-14 xl:px-20 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto">
+          {/* Category label with underline */}
+          <div className="inline-block mb-12 md:mb-16">
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-foreground font-medium mb-2">
+              {tc("accessories")}
+            </p>
+            <div className="w-full h-[1.5px] bg-foreground/80" />
+          </div>
 
-        {/* ── RIGHT HALF: Category label + variants ── */}
-        <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 flex items-center">
-          <div className="w-full">
-            {/* Category label with underline */}
-            <div className="inline-block mb-10">
-              <p className="text-sm md:text-base tracking-[0.3em] uppercase text-foreground font-medium mb-2">
-                {tc("accessories")}
-              </p>
-              <div className="w-full h-[1.5px] bg-foreground/80" />
-            </div>
-
-            {/* Accessories — stacked on mobile, side-by-side on desktop */}
-            <div className="flex flex-col gap-8">
-              {accessories.map((item) => (
-                <div key={item.name} className="flex flex-col md:flex-row gap-3 md:gap-4">
-                  <div className="relative w-full aspect-square md:w-44 md:h-44 md:aspect-auto flex-shrink-0 overflow-hidden bg-white">
-                    <SupabaseImage
-                      src={getImageUrl(item.image)}
-                      alt={item.name}
-                      fill
-                      className="object-contain object-center"
-                      sizes="(max-width: 768px) 100vw, 150px"
-                    />
-                  </div>
-                  <div className="flex-1 min-w-0 flex flex-col justify-center">
-                    <h4 className="text-xs tracking-[0.08em] font-semibold mb-2">
-                      {item.name}
-                    </h4>
-                    <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide">
-                      {item.description}
-                    </p>
-                  </div>
+          {/* Accessories — stacked with more space between items */}
+          <div className="flex flex-col gap-14 md:gap-20">
+            {accessories.map((item, idx) => (
+              <div key={item.name} className="flex flex-col md:flex-row gap-4 md:gap-6">
+                <div className={`relative w-full aspect-square md:w-52 md:h-52 md:aspect-auto flex-shrink-0 overflow-hidden bg-white ${idx === 0 ? "" : ""}`}>
+                  <SupabaseImage
+                    src={getImageUrl(item.image)}
+                    alt={item.name}
+                    fill
+                    className="object-contain object-left"
+                    sizes="(max-width: 768px) 100vw, 200px"
+                  />
                 </div>
-              ))}
-
-              {/* View accessories in store */}
-              <div className="mt-4">
-                <a
-                  href="https://marbelladd.com/collections/accessories"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline text-[10px] tracking-[0.2em] uppercase text-foreground/80 hover:text-foreground transition-all duration-300"
-                >
-                  <span className="border-b border-foreground/50 hover:border-foreground pb-0.5">
-                    {t("viewInStore")} →
-                  </span>
-                </a>
+                <div className="flex-1 min-w-0 flex flex-col justify-center">
+                  <h4 className="text-xs tracking-[0.08em] font-semibold mb-2">
+                    {item.name}
+                  </h4>
+                  <p className="text-xs text-foreground/75 leading-[1.9] tracking-wide">
+                    {item.description}
+                  </p>
+                </div>
               </div>
+            ))}
+
+            {/* View accessories in store */}
+            <div className="mt-4">
+              <a
+                href="https://marbelladd.com/collections/accessories"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline text-[10px] tracking-[0.2em] uppercase text-foreground/80 hover:text-foreground transition-all duration-300"
+              >
+                <span className="border-b border-foreground/50 hover:border-foreground pb-0.5">
+                  {t("viewInStore")} →
+                </span>
+              </a>
             </div>
           </div>
         </div>
