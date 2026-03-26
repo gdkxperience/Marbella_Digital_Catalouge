@@ -597,7 +597,7 @@ export default function ProductsSection() {
 
         return (
           <div key={cat} className="mt-16 md:mt-24 first:mt-0">
-            <div className="space-y-16 md:space-y-24">
+            <div className="space-y-6 md:space-y-24">
               {catProducts.map((product, prodIdx) => (
                 <ProductSpread
                   key={product.slug}
